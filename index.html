@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+     
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="pages/parqueadero.html">Consultar URl</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mi_contenedor">
+        <h1>URLS</h1>
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Ingrese la url</h6>
+                <form action="javascript:void(0)" onsubmit="guardar()">
+                    <div class="form-group">
+                        <label for="url">URL</label>
+                        <input class="form-control" type="text" placeholder="Ingrese la url" id="url" required >
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">nombre</label>
+                        <input class="form-control" type="text"  id="nombre"
+                            placeholder="Ingrese un nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">descripcion</label>
+                        <input class="form-control" type="text" placeholder="Ingrese una descripcion" id="descripcion"
+                            >
+                    </div>
+                    <input id="btnAceptar" class="btn btn-primary" type="submit" value="Aceptar">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+
+   
+    let guardar = () => {
+        let urlNuevo = document.getElementById("url").value
+        let nombreNuevo = document.getElementById("nombre").value
+        let descripcionNuevo = document.getElementById("descripcion").value
+      params = {
+        nombre : urlNuevo,
+        url : nombreNuevo,
+        descripcion : descripcionNuevo
+      }
+      axios.post("http://localhost:3000/url",params).then((response) =>{
+        console.log(urlNuevo,nombreNuevo,descripcionNuevo)
+      console.log("Intento de insert")
+      console.log(response)
+
+      document.getElementById("url").value = ""
+      document.getElementById("nombre").value = ""
+      document.getElementById("descripcion").value = ""
+    })}
+
+  </script>
+
+</html>
