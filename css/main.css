@@ -1,0 +1,13 @@
+.navbar a{
+    font-family: 'Lobster', cursive;
+      font-size: 30px;
+      float:center;
+      color: #a0a0a0 !important;
+  }
+  .nav-link{
+      color: #0f0e0e !important;
+  }
+
+  h1{
+    font-family:'Lobster', cursive ;
+}

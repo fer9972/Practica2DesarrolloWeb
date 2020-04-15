@@ -13,7 +13,7 @@ app.use(express.json());
  * URI's  disponibles en el API
  */
 app.get("/", (req, res) => {
-  res.send("Bienvenido a la API  donde guardas urls");
+  res.send("Bienvenido a la API donde guardas urls");
 });
 // IMPORTAR las rutas con los endpoints especificos
 const Urls = require("./routes/url");

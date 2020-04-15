@@ -19,10 +19,9 @@ let validarUrl = url => {
   }
 };
 /**
- * Se inserta el registro en la base de datos
- * El metodo debe ser async, aqui el orden de ejecución es importante,
- * si no tuvieramos esto la respuesta del metodo seria undefined
- * @param {*} registro Json del registro
+ * Se inserta la url en la base de datos
+ * El metodo debe ser async, aqui el orden de ejecución es importante
+ * @param {*} url 
  */
 
 let guardarUrl = async (url) => {
@@ -41,7 +40,7 @@ let guardarUrl = async (url) => {
 
 let consultarUrl = async (url) => {
   let _servicio = new ServicioPg();
-  let consultaSql = `SELECT (url,nombre,descripcion) FROM public.url where nombre like '%${url.nombre}%'`;
+  let consultaSql = `SELECT url,nombre,descripcion FROM public.url`;
   let respuesta = await _servicio.ejecutarSql(consultaSql);
   return respuesta;
 };

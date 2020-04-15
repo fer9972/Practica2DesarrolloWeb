@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Links</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
@@ -19,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                <a class="nav-link" href="pages/parqueadero.html">Consultar URl</a>
+                <a class="nav-link" href="pages/mostrar.html">Consultar URl</a>
                 </li>
             </ul>
             </div>
@@ -30,7 +31,7 @@
         <h1>URLS</h1>
         <div class="card">
             <div class="card-body">
-                <h6 class="card-subtitle mb-2 text-muted">Ingrese la url</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Ingrese su url favorita!!!</h6>
                 <form action="javascript:void(0)" onsubmit="guardar()">
                     <div class="form-group">
                         <label for="url">URL</label>
@@ -68,24 +69,28 @@
 <script>
 
 
-   
+   //metodo para capturar los datos y mandarlos al servicio para hacer el post en 
+   //la base de datos 
     let guardar = () => {
         let urlNuevo = document.getElementById("url").value
         let nombreNuevo = document.getElementById("nombre").value
         let descripcionNuevo = document.getElementById("descripcion").value
-      params = {
-        nombre : urlNuevo,
-        url : nombreNuevo,
+        params = {
+        nombre : nombreNuevo,
+        url : urlNuevo,
         descripcion : descripcionNuevo
       }
+      //mandamso la peticion al servicio
       axios.post("http://localhost:3000/url",params).then((response) =>{
-        console.log(urlNuevo,nombreNuevo,descripcionNuevo)
-      console.log("Intento de insert")
+    console.log(urlNuevo,nombreNuevo,descripcionNuevo)
+      console.log("insertó")
       console.log(response)
 
+      //limpiamos los campos de la pagina 
       document.getElementById("url").value = ""
       document.getElementById("nombre").value = ""
       document.getElementById("descripcion").value = ""
+      alert("La url Se agregó correctamente");
     })}
 
   </script>
